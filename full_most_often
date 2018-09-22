@@ -1,0 +1,19 @@
+with full_station as (
+SELECT
+	station_id,
+	docks_available
+FROM
+	status
+WHERE
+	docks_available = 0
+GROUP BY 1,2)
+
+SELECT
+	name
+FROM
+	stations
+JOIN
+	full_station
+ON
+	stations.station_id = full_station.station_id
+	

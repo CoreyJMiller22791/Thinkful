@@ -1,0 +1,12 @@
+SELECT
+	stations.dockcount,
+	trips.start_station,
+	COUNT(*) AS trip_count
+FROM
+	stations
+JOIN
+	trips
+ON
+	stations.name = trips.start_station
+GROUP BY 2,1
+ORDER BY 1

@@ -1,0 +1,24 @@
+--What is the length of the longest trip for each day it rains anywhere?
+-- start by creating temp table to get each day it rains
+WITH 
+	rain
+AS (
+	SELECT 
+		DATE(date),
+		Events
+	FROM
+		weather
+	WHERE
+		Events = 'Rain' or Events = 'Rain-Thunderstorm' or Events = 'Fog-Rain'
+	GROUP BY 1,2
+	)
+SELECT 
+	MAX(duration),
+	CAST(start_date AS DATE)
+FROM
+	trips
+JOIN
+	rain
+ON
+	DATE(start_date) = DATE(rain.date)
+GROUP BY 2

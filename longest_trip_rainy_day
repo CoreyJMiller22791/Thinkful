@@ -1,0 +1,15 @@
+SELECT
+	MAX(trips.duration),
+	CAST(trips.start_date AS DATE),
+	weather.events
+FROM
+	trips
+JOIN
+	weather
+ON
+	DATE(trips.start_date) = DATE(weather.date)
+WHERE events='Rain' OR events='Rain-Thunderstom' OR events='Fog-Rain'
+GROUP BY 2,3
+ORDER BY 1 DESC
+LIMIT 3
+	
