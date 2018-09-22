@@ -1,0 +1,8 @@
+SELECT
+	trip_id,
+	MIN(duration) as shortest_trip
+FROM
+	trips
+GROUP BY trip_id
+ORDER BY 2 
+--LIMIT 1

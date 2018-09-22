@@ -1,0 +1,7 @@
+SELECT
+	end_station,
+	ROUND(AVG(duration),2) as average_trip
+FROM
+	trips
+GROUP BY 1
+ORDER BY 2

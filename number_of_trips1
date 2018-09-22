@@ -1,0 +1,9 @@
+SELECT
+	start_station,
+	COUNT(trip_id) number_of_trips
+FROM
+	trips
+GROUP BY
+	1
+ORDER BY
+	2 DESC
